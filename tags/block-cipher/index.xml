@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Block Cipher on Security Notes</title>
+    <link>/tags/block-cipher/</link>
+    <description>Recent content in Block Cipher on Security Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 25 Jan 2020 16:52:36 -0500</lastBuildDate>
+    
+	<atom:link href="/tags/block-cipher/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cryptography I - Stanford University - Week 2</title>
+      <link>/blog/2020/01/25/cryptography-i---stanford-university---week-2/</link>
+      <pubDate>Sat, 25 Jan 2020 16:52:36 -0500</pubDate>
+      
+      <guid>/blog/2020/01/25/cryptography-i---stanford-university---week-2/</guid>
+      <description>Week 2:
+Crypto notes - Stanford - Week 2  Block Ciphers  Pseudo Random Function (PRF) Pseudo Random Permutation (PRP) Secure PRF PRF =&amp;gt; PRG  Data Encryption Standard  []() []()    Block Ciphers A block cipher maps n bits of inputs to n bits of output. Examples : - 3DES: n=64bits, k=168 bits - AES: n=128bits, k = 128,192,256 bits
+Block ciphers are typically built by iteration with a round function R(k, m).</description>
+    </item>
+    
+  </channel>
+</rss>
