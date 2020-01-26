@@ -132,7 +132,7 @@ Examples :
 
 <p>Block ciphers are typically built by iteration with a round function R(k, m). It takes as input the round key k and the message m. The key k is expanded into &lsquo;round keys&rsquo; k1, k2, &hellip; kn. The message m is then encoded using R that stands for round function, which takes one of the round keys, and the current state of the message /mi/. This sequence of steps is applied iteratively until we reach /kn/, and the concatenation of the output of R is our cipher text.</p>
 
-<p><img src="./images/blockcipher.jpg" alt="" /></p>
+<p><img src="/images/blockcipher.jpg" alt="" /></p>
 
 <p>Different ciphers have different amount of rounds. For 3DES it&rsquo;s 48, and for AES-128 it is 10.</p>
 
@@ -225,7 +225,7 @@ because the hardware that encrypts can be used f</li>
 </ul></li>
 </ul>
 
-<p><img src="./images/des.jpg" alt="" /></p>
+<p><img src="/images/des.jpg" alt="" /></p>
 
 <p>A Feistel Network mapping a 2n bit input to 2n bit output:
 Encryption
@@ -235,7 +235,7 @@ Decryption
 L<em>i = f</em>{i+1} (L<em>{i+1}) XOR R</em>{i+1}
 R<em>i = L</em>{i+1}</p>
 
-<p><img src="./images/construct-inverse.png" alt="" /></p>
+<p><img src="/images/construct-inverse.png" alt="" /></p>
 
 <p>Feistal networks are a general method for building invertible functions (block ciphers) from arbitrary functions. And it’s used in many block ciphers but not AES.</p>
 
