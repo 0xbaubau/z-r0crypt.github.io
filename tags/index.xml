@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Security Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Nov 2019 22:10:36 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 16:52:36 -0500</lastBuildDate>
     
 	<atom:link href="https://z-r0crypt.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aes</title>
+      <link>https://z-r0crypt.github.io/tags/aes/</link>
+      <pubDate>Mon, 03 Feb 2020 16:52:36 -0500</pubDate>
+      
+      <guid>https://z-r0crypt.github.io/tags/aes/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Assembly</title>
@@ -30,9 +39,18 @@
     </item>
     
     <item>
+      <title>Block Cipher</title>
+      <link>https://z-r0crypt.github.io/tags/block-cipher/</link>
+      <pubDate>Mon, 03 Feb 2020 16:52:36 -0500</pubDate>
+      
+      <guid>https://z-r0crypt.github.io/tags/block-cipher/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cryptography</title>
       <link>https://z-r0crypt.github.io/tags/cryptography/</link>
-      <pubDate>Sun, 24 Nov 2019 16:52:36 -0500</pubDate>
+      <pubDate>Mon, 03 Feb 2020 16:52:36 -0500</pubDate>
       
       <guid>https://z-r0crypt.github.io/tags/cryptography/</guid>
       <description></description>
@@ -44,6 +62,15 @@
       <pubDate>Mon, 25 Nov 2019 22:10:36 -0500</pubDate>
       
       <guid>https://z-r0crypt.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Des</title>
+      <link>https://z-r0crypt.github.io/tags/des/</link>
+      <pubDate>Mon, 03 Feb 2020 16:52:36 -0500</pubDate>
+      
+      <guid>https://z-r0crypt.github.io/tags/des/</guid>
       <description></description>
     </item>
     
