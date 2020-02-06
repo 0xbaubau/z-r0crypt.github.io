@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https://z-r0crypt.github.io"
+    },
+    "articleSection" : "post",
+    "name" : "Cryptography I - Stanford University - Week 2 - part 2",
+    "headline" : "Cryptography I - Stanford University - Week 2 - part 2",
+    "description" : "Crypto notes - Stanford - Week 2  Using Block Ciphers  Modes of operation: One time key  #security-for-one-time-key ECB (Electronic Code Book) - One time key  Deterministic counter mode from a PRF F (eg. AES) - One time key   Modes of operation: Many time key (CBC)  Security for many-time key CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)  Modes of operation: Many time key (CTR)    Using Block Ciphers Modes of operation: One time key Goal: Build a secure encryption from a secure PRP",
+    "inLanguage" : "en-US",
+    "author" : "Z-r0crypt",
+    "creator" : "Z-r0crypt",
+    "publisher": "Z-r0crypt",
+    "accountablePerson" : "Z-r0crypt",
+    "copyrightHolder" : "Z-r0crypt",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-02-05 16:52:36 -0500 -0500",
+    "dateModified" : "2020-02-05 16:52:36 -0500 -0500",
+    "url" : "https://z-r0crypt.github.io/blog/2020/02/05/cryptography-i---stanford-university---week-2---part-2/",
+    "wordCount" : "849",
+    "keywords" : [ "Cryptography","Block Cipher Modes","ECB","CTR","CBC","Blog" ]
+}
+</script>
+
+  <title>Cryptography I - Stanford University - Week 2 - part 2 &middot; Z-r0crypt</title>
+
+  
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/poole.css">
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/hyde.css">
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/poole-overrides.css">
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/hyde-overrides.css">
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/hyde-x.css">
+  <link rel="stylesheet" href="https://z-r0crypt.github.io/css/highlight/sunburst.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://z-r0crypt.github.io/touch-icon-144-precomposed.png">
+  <link href="https://z-r0crypt.github.io/favicon.png" rel="icon">
+
+  
+  
+  
+  
+
+  <meta name="description" content="Your default page description">
+  <meta name="keywords" content="Exploit, Infosec, Security, BugBounty, Bug Hunting, Penetration Testing, Pentest">
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-153171451-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
+  
+    <meta name="google-site-verification" content="lKxcocybGM-2fyrJhswx85Oxp6S4sqLCd-M0H34O-Ko">
+  
+</head>
+<body class="theme-base-08">
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      
+      <h1>Z-r0crypt</h1>
+      <p class="lead">Security Enthusiast</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item"><a href="https://z-r0crypt.github.io/">Blog</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://z-r0crypt.github.io/post/">Posts</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://z-r0crypt.github.io/tags/">Tags</a></li>
+      
+      <li class="sidebar-nav-item"><a href="https://z-r0crypt.github.io/about">About</a></li>
+      
+    </ul>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+      <a href="https://github.com/z-r0crypt"><i class="fa fa-github-square fa-3x"></i></a>
+      
+      
+      <a href="https://linkedin.com/in/vbtr"><i class="fa fa-linkedin-square fa-3x"></i></a>
+      
+      
+      <a href="https://twitter.com/zer0crypt"><i class="fa fa-twitter-square fa-3x"></i></a>
+      
+      
+      </li>
+    </ul>
+
+    
+
+    <p>Copyright &copy; 2020 <a href="https://z-r0crypt.github.io/license/">License</a><br/>
+       Powered by <a href="http://gohugo.io">Hugo</a> and <a href="https://github.com/zyro/hyde-x">Hyde-X</a></p>
+
+  </div>
+</div>
+
+
+<div class="content container">
+  <div class="post">
+    <h1 class="post-title">Cryptography I - Stanford University - Week 2 - part 2</h1>
+    <span class="post-date">Feb 5, 2020
+    
+    <br/>
+    <a class="label" href="https://z-r0crypt.github.io/categories/cryptography">Cryptography</a>
+    </span>
+    
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<span style="color: silver;">Share on: </span><div id="share-buttons">
+<div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+<div class="twitter" title="Share this on Twitter" onclick="window.open('http://twitter.com/home?status=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+
+<div class="gplus" title="Share this on Google Plus" onclick="window.open('https://plus.google.com/share?url=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 2304 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1437 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z"/></svg></div>
+<div class="mail" title="Share this through Email" onclick="window.open('mailto:?&body=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z"/></svg></div>
+</div>
+
+
+    
+
+<h1 id="crypto-notes-stanford-week-2">Crypto notes - Stanford - Week 2</h1>
+
+<ol>
+<li><a href="#using-block-ciphers">Using Block Ciphers</a>
+
+<ul>
+<li><a href="#modes-of-operation-one-time-key">Modes of operation: One time key</a>
+
+<ul>
+<li><a href="#security-for-one-time-key">#security-for-one-time-key</a></li>
+<li><a href="#ecb-electronic-code-book---one-time-key">ECB (Electronic Code Book) - One time key</a>
+
+<ul>
+<li><a href="#deterministic-counter-mode-from-a-prf-f-eg-aes---one-time-key">Deterministic counter mode from a PRF F (eg. AES) - One time key</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#">Modes of operation: Many time key (CBC)</a>
+
+<ul>
+<li><a href="#security-for-many-time-key">Security for many-time key</a></li>
+<li><a href="#cbc-cipher-block-chaining-with-a-random-iv---many-time-key-cpa-security">CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)</a></li>
+</ul></li>
+<li><a href="#">Modes of operation: Many time key (CTR)</a>
+<br /></li>
+</ul></li>
+</ol>
+
+<hr />
+
+<h2 id="using-block-ciphers">Using Block Ciphers</h2>
+
+<hr />
+
+<h2 id="modes-of-operation-one-time-key">Modes of operation: One time key</h2>
+
+<p>Goal: Build a secure encryption from a secure PRP</p>
+
+<h3 id="security-for-one-time-key">Security for one-time key</h3>
+
+<p>Let’s start with a threat model (one-time keys) defined as follows:
+- Adversary’s power: Adv sees only one cipher text
+- Adversary’s goal: Learn info about PT from CT (semantic security)</p>
+
+<p>Reminder: semantic security for a one-time key. The attacker, if given c_0 and c_1 and m_0 and m<em>1 can’t know which one is the result of what message.
+Adv</em>{SS} [A, OTP] = | Pr[ EXP(0)=1 ] - Pr[ EXP(1) = 1 ] |</p>
+
+<h3 id="ecb-electronic-code-book-one-time-key">ECB (Electronic Code Book) - One time key</h3>
+
+<p>ECB is badly broken. It works by breaking down the message into n blocks of size of the block cipher and then encrypt each of the parts individually. Issue, the attacker learns when a two segments have the same value. (if m_1 = m_2 -&gt; c_1 = c_2)</p>
+
+<p><strong>ECB is not semantically secure.</strong>
+ECB is not semantically secure for messages that contain more than one block.</p>
+
+<p><img src="http://cl.ly/Tdm9/Screen%20Shot%202014-01-30%20at%2011.28.png" alt="ECB’s advantage is 1!" /></p>
+
+<h4 id="deterministic-counter-mode-from-a-prf-f-eg-aes-one-time-key">Deterministic counter mode from a PRF F (eg. AES) - One time key</h4>
+
+<p>E_{DETCTR} (k,m) = We build a stream cipher from a PRF.</p>
+
+<p><img src="http://cl.ly/Te5t/Screen%20Shot%202014-01-30%20at%2011.37.39.png" alt="Deterministic Counter Mode" /></p>
+
+<h3 id="security-for-many-time-key">Security for many-time key</h3>
+
+<p>Why? Many applications: Filesystems or IPSec, encrypts a lot of traffic with the same key.</p>
+
+<p>When we use a key more than once, the adversary sees many cipher texts with the same key.</p>
+
+<p><strong>Adversary&rsquo;s power</strong>: chosen-plaintext attack, the attacker can obtain the encryption of arbitrary messages of his choice (How does it work IRL? You can email someone, email will be stored encrypted on disk and boom you have m and c).</p>
+
+<p><strong>Adversary goal</strong>: Break semantic security</p>
+
+<p>Semantic-security for many-time key is defined exactly as semantic security for a one-time key but he can repeat any of the messages in the challenge that the attacker can choose. ==&gt; Chosen Plaintext attack.</p>
+
+<p>All the deterministic encryption schemes we’ve seen before are broken under CPA.</p>
+
+<p>So how do we fix this?</p>
+
+<p>1) Randomized encryption: encrypting same message twice gives different cipher text. Ciphertext must be longer than plaintext. size(CT) = size (PT) + “#random bits”</p>
+
+<p>2) Nonce-based encryption. We define a <strong>nonce</strong> as a value that changes from message to message. The pair (k, n) should NEVER be used more than once. The nonce can conveniently be a counter (if in-order and reliable transmission channel, no need to transmit nonce). If same key used by multiple machines, the nonce space needs to be very big and picked at random (easier to implement a “stateless” protocol)</p>
+
+<h3 id="cbc-cipher-block-chaining-with-a-random-iv-many-time-key-cpa-security">CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)</h3>
+
+<h4 id="iv-based-encryption">IV-based encryption</h4>
+
+<p>When we start encrypting the first block, we pick a random IV (initialization vector of length one bloc).  We XOR the first message with it before encrypting.
+IV is publicly known and prepended to the cipher text.
+Chaining is done by for the next block XORing the cipher text of the first block with the new message and then encrypting.</p>
+
+<p>What security does it provide?</p>
+
+<p>It does provide semantic security:</p>
+
+<p>Adv<em>CPA [A , E</em>{CBC} ] =&lt; 2 * Adv_PRP [B, E] + (2 q^2 L^2 / |X| = error term, needs to be negligible)</p>
+
+<p><strong>CBC is secure as long as q^2L^2 &lt;&lt; |X| where L is the length of the messages and q is the number of times we used q to encrypt messages.</strong></p>
+
+<p>Applied to AES, this means that after 2^48 blocks, we need to replace the key.</p>
+
+<p>Cipher is not CPA secure if the IV is predictable.</p>
+
+<p><img src="http://cl.ly/ThMj/Screen%20Shot%202014-02-01%20at%2021.47.48.png" alt="IV-based encryption" /></p>
+
+<h4 id="nonce-based-encryption">Nonce-based encryption</h4>
+
+<p>Cipher-block chaining with unique nonce. (no need to include in first cipher text)</p>
+
+<p>If nonce is not random, it needs to be xored with first block.</p>
+
+<p><img src="http://cl.ly/Tgje/Screen%20Shot%202014-02-01%20at%2021.47.34.png" alt="Nonce-based CBC" /></p>
+
+<h4 id="padding">Padding</h4>
+
+<p>In TLS, you pad the n remaining bytes with the number n. If no pad is needed, add a dummy block.</p>
+
+<h3 id="randomised-counter-mode-superior-to-cbc">Randomised Counter-mode (superior to CBC)</h3>
+
+<p>Unlike CBC, randomised counter-mode doesn’t need a secure block cipher (PRP) but works with a secure PRF because we’re never going to invert the function F.</p>
+
+<p>How does it work?</p>
+
+<p>We pick a random IV, then we XOR the messages blocks with F(k,IV + message block number)</p>
+
+<p>Nonce based counter mode: IV = [ 64-bit nonce | 64-bit counter (starts at 0 for every message)]</p>
+
+<p>Note that we can encrypt a maximum of 2^64 blocks per nonce because otherwise the counter overflows and the pad would be used a second time.</p>
+
+<p>We can use counter-mode for more blocks than CBC because  the adversary’s advantage is 2q^2L / |X| &lt; CBC’s advantage.</p>
+
+<p>For AES, we can encrypt 2^64 AES blocks  with the same key with semantic secrecy.</p>
+
+<p>Advantage: It’s parallelizable! Fast encryption! And is so much better than CBC.</p>
+
+<p><img src="http://cl.ly/TgXt/Screen%20Shot%202014-02-01%20at%2022.38.13.png" alt="CBC vs Counter" /></p>
+
+    
+
+<style>
+#share-buttons {display: inline-block; vertical-align: middle; }
+#share-buttons:after {content: ""; display: block; clear: both;}
+#share-buttons > div {
+position: relative;
+text-align: left; 
+height: 36px; 
+width: 32px; 
+float: left; 
+text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #d5d5d5; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<span style="color: silver;">Share on: </span><div id="share-buttons">
+<div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+<div class="twitter" title="Share this on Twitter" onclick="window.open('http://twitter.com/home?status=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+<div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+
+<div class="gplus" title="Share this on Google Plus" onclick="window.open('https://plus.google.com/share?url=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 2304 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1437 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z"/></svg></div>
+<div class="mail" title="Share this through Email" onclick="window.open('mailto:?&body=https:\/\/z-r0crypt.github.io\/blog\/2020\/02\/05\/cryptography-i---stanford-university---week-2---part-2\/');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h2q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zm0-294q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-2q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z"/></svg></div>
+</div>
+
+
+ </div>
+  
+</div>
+
+
+
+
+<script src="https://z-r0crypt.github.io/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+
