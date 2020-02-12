@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on Security Notes</title>
+    <link>https://z-r0crypt.github.io/tags/ssh/</link>
+    <description>Recent content in Ssh on Security Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Feb 2020 07:10:36 -0500</lastBuildDate>
+    
+	<atom:link href="https://z-r0crypt.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Port Forward (Tunnelling) Quick Reference Guide</title>
+      <link>https://z-r0crypt.github.io/blog/2020/02/12/port-forward-tunnelling-quick-reference-guide/</link>
+      <pubDate>Wed, 12 Feb 2020 07:10:36 -0500</pubDate>
+      
+      <guid>https://z-r0crypt.github.io/blog/2020/02/12/port-forward-tunnelling-quick-reference-guide/</guid>
+      <description>PORT FORWARDING &amp;ldquo;port to port&amp;rdquo;: Metasploit  Works on many platforms  Forward: Get meterpreter session on one of the dual homed machines
+portfwd add -l 4445 -p 4443 -r 10.1.1.1  Use -R to make it reverse
+SSH  Works on Linux  Cond: &amp;ldquo;if you already have an SSH session&amp;rdquo;
+Remote Port Forwarding -R 8081:172.24.0.2:80 (on my Kali machine listen on 8081, get it from 192.168.0.5:80) &amp;lt;KALI 10.</description>
+    </item>
+    
+  </channel>
+</rss>
