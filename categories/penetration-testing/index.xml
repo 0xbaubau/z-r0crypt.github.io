@@ -20,7 +20,7 @@
       <description>PORT FORWARDING &amp;ldquo;port to port&amp;rdquo;: Metasploit  Works on many platforms  Forward: Get meterpreter session on one of the dual homed machines
 portfwd add -l 4445 -p 4443 -r 10.1.1.1  Use -R to make it reverse
 SSH  Works on Linux  Cond: &amp;ldquo;if you already have an SSH session&amp;rdquo;
-Remote Port Forwarding -R 8081:172.24.0.2:80 (on my Kali machine listen on 8081, get it from 192.168.0.5:80) &amp;lt;KALI 10.</description>
+Remote Port Forwarding -R 8081:192.168.0.5:80 (on my Kali machine listen on 8081, get it from 192.168.0.5:80) &amp;lt;KALI 10.</description>
     </item>
     
   </channel>
