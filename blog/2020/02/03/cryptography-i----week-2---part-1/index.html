@@ -28,7 +28,7 @@
     "datePublished": "2020-02-03 16:52:36 -0500 -0500",
     "dateModified" : "2020-02-03 16:52:36 -0500 -0500",
     "url" : "https://z-r0crypt.github.io/blog/2020/02/03/cryptography-i----week-2---part-1/",
-    "wordCount" : "2403",
+    "wordCount" : "2402",
     "keywords" : [ "Cryptography","Block Cipher","AES","DES","Blog" ]
 }
 </script>
@@ -460,14 +460,19 @@ key-length = 184 bits. Attack known in 2^120.</p>
 
 <p>Given many input/output pairs, can recover key in less time than exhaustive search (2^56 for DES)</p>
 
-<p>Pr[m[i_1] XOR … XOR m[i_r] XOR c[j_j] XOR … XOR c[j_v] = k[l_1] XOR … XOR k[l_u] ] = <sup>1</sup>&frasl;<sub>2</sub> + epsilon</p>
+<pre><code> Pr[m[i_1] XOR … XOR m[i_r] XOR c[j_j] XOR … XOR c[j_v] = k[l_1] XOR … XOR k[l_u] ] = 1/2 + epsilon 
+</code></pre>
 
-<p>For DES, epsilon = 1/(2^(21)) ~= 0.0000000477 because the fifth S-Box is too close to a linear function.</p>
+<p>For DES, <code>epsilon = 1/(2^(21)) ~= 0.0000000477</code> because the fifth S-Box is too close to a linear function.</p>
 
 <p><strong>How can we attack it to find key bits?</strong></p>
 
-<p>Given 1/epsilon^2 random (m, c=DES(k, m) ) pairs then
-   k[l_1, … , l_u] = MAJ [ m[i_1 , … , i_r] XOR c[j_j, …,j_v] ] with probability &gt;= 97.7%.</p>
+<p>Given 1/epsilon^2 random (m, c=DES(k, m) ) pairs then</p>
+
+<pre><code> k[l_1, … , l_u] = MAJ [ m[i_1 , … , i_r] XOR c[j_j, …,j_v] ]  
+</code></pre>
+
+<p>with probability &gt;= 97.7%.</p>
 
 <p><strong>Linear Attacks</strong></p>
 
@@ -501,8 +506,9 @@ key-length = 184 bits. Attack known in 2^120.</p>
 <li>2000: NIST chooses Rijndael as AES (designed in Belgium)</li>
 </ul>
 
-<p>Key sizes = 128, 192, 256 bits.
-Larger keys: slower encryption but thought to be more secure.</p>
+<p>Key sizes = 128, 192, 256 bits.</p>
+
+<p>Larger keys: slower encryption but thought to be more secure.</p>
 
 <p>Block size = 128 bits</p>
 
@@ -562,12 +568,17 @@ PRP -&gt; One to one revertible function. Domain X=Y. Key concept to build a blo
 
 <p>Any secure PRP is also a secure PRF if |X| is sufficiently large.</p>
 
-<p>Lemma: Let E be a PRP over (K,X) then for any q-query adversary A:
-&gt; |Adv<em>{PRF} [A,E] - Adv</em>{PRF} [A,E] | &lt; q^2 / 2|X|
-When X is large, the ratio will be negligible.</p>
+<p>Lemma: Let E be a PRP over (K,X) then for any q-query adversary A:</p>
+
+<pre><code>|Adv_{PRF} [A,E] - Adv_{PRF} [A,E] | &lt; q^2 / 2|X|
+</code></pre>
+
+<p>When X is large, the ratio will be negligible.</p>
 
 <p>So we can say that if E is secure PRP, it is also Secure PRF.
 From now on, we consider AES or 3DES as secure PRPs.</p>
+
+<hr />
 
     
 
