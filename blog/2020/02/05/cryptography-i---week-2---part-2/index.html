@@ -17,7 +17,7 @@
     "articleSection" : "post",
     "name" : "Cryptography I - Week 2 - part 2",
     "headline" : "Cryptography I - Week 2 - part 2",
-    "description" : "Using Block Ciphers  Modes of operation: One time key  Security for one time key ECB (Electronic Code Book) - One time key  Deterministic counter mode from a PRF F (eg. AES) - One time key   Modes of operation: Many time key (CBC)  Security for many-time key CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)  Modes of operation: Many time key (CTR)    Using Block Ciphers Modes of operation: One time key Goal: Build a secure encryption from a secure PRP",
+    "description" : "Using Block Ciphers  Modes of operation: One time key  Security for one time key ECB (Electronic Code Book) - One time key  Deterministic counter mode from a PRF F (eg. AES) - One time key   Modes of operation: Many time key  CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)  IV (Initialization Vector) IV-based encryption Nonce-based encryption Padding  Randomised Counter-mode (CTR) (superior to CBC) Coparison: CTR vs CBC     Using Block Ciphers Modes of operation: One time key Goal: Build a secure encryption from a secure PRP",
     "inLanguage" : "en-US",
     "author" : "Z-r0crypt",
     "creator" : "Z-r0crypt",
@@ -28,7 +28,7 @@
     "datePublished": "2020-02-05 16:52:36 -0500 -0500",
     "dateModified" : "2020-02-05 16:52:36 -0500 -0500",
     "url" : "https://z-r0crypt.github.io/blog/2020/02/05/cryptography-i---week-2---part-2/",
-    "wordCount" : "1274",
+    "wordCount" : "1308",
     "keywords" : [ "Cryptography","Block Cipher Modes","ECB","CTR","CBC","Blog" ]
 }
 </script>
@@ -186,14 +186,21 @@ text-align: center;
 <li><a href="#deterministic-counter-mode-from-a-prf-f-eg-aes---one-time-key">Deterministic counter mode from a PRF F (eg. AES) - One time key</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#">Modes of operation: Many time key (CBC)</a>
+<li><a href="#security-for-many-time-key">Modes of operation: Many time key</a>
 
 <ul>
-<li><a href="#security-for-many-time-key">Security for many-time key</a></li>
-<li><a href="#cbc-cipher-block-chaining-with-a-random-iv---many-time-key-cpa-security">CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)</a></li>
+<li><a href="#cbc-cipher-block-chaining-with-a-random-iv---many-time-key-cpa-security">CBC (Cipher Block Chaining with a random IV) - Many time key (CPA security)</a>
+
+<ul>
+<li><a href="#iv-initialization-vector">IV (Initialization Vector)</a></li>
+<li><a href="#iv-based-encryption">IV-based encryption</a></li>
+<li><a href="#nonce-based-encryption">Nonce-based encryption</a></li>
+<li><a href="#padding">Padding</a></li>
 </ul></li>
-<li><a href="#">Modes of operation: Many time key (CTR)</a>
+<li><a href="#randomised-counter-mode-ctr-superior-to-cbc">Randomised Counter-mode (CTR) (superior to CBC)</a></li>
+<li><a href="#coparison-ctr-vs-cbc">Coparison: CTR vs CBC</a>
 <br /></li>
+</ul></li>
 </ul></li>
 </ol>
 
@@ -279,11 +286,11 @@ ECB is not semantically secure for messages that contain more than one block.</p
 IV is publicly known and prepended to the cipher text.
 Chaining is done by for the next block XORing the cipher text of the first block with the new message and then encrypting.</p>
 
-<p>What security does it provide?</p>
+<p><strong>What security does it provide?</strong></p>
 
 <p>It does provide semantic security:</p>
 
-<p>Adv<em>CPA [A , E</em>{CBC} ] =&lt; 2 * Adv_PRP [B, E] + (2 q^2 L^2 / |X| = error term, needs to be negligible)</p>
+<p><code>Adv_CPA [A , E_{CBC} ] =&lt; 2 * Adv_PRP [B, E] + (2 q^2 L^2 / |X| = error term, needs to be negligible)</code></p>
 
 <p><strong>CBC is secure as long as q^2L^2 &lt;&lt; |X| where L is the length of the messages and q is the number of times we used q to encrypt messages.</strong></p>
 
@@ -293,9 +300,14 @@ Chaining is done by for the next block XORing the cipher text of the first block
 
 <p><img src="http://cl.ly/ThMj/Screen%20Shot%202014-02-01%20at%2021.47.48.png" alt="IV-based encryption" /></p>
 
+<p><strong>Decryption Circuit for IV based encryption</strong></p>
+
+<p><img src="https://github.com/z-r0crypt/Cryptography-Notes/raw/master/images/IV%20based%20decryption.JPG" alt="" /></p>
+
 <h4 id="nonce-based-encryption">Nonce-based encryption</h4>
 
-<p>Cipher-block chaining with unique nonce. (no need to include in first cipher text)</p>
+<p>Cipher-block chaining with unique nonce. (no need to include in first cipher text) : key = (k, k1).
+ &gt; unique nonce means: (key, n) pair is used for only one message.</p>
 
 <p>If nonce is not random, it needs to be xored with first block.</p>
 
@@ -311,19 +323,21 @@ Chaining is done by for the next block XORing the cipher text of the first block
 
 <p>Unlike CBC, randomised counter-mode doesn’t need a secure block cipher (PRP) but works with a secure PRF because we’re never going to invert the function F.</p>
 
-<p>How does it work?</p>
+<p><strong>How does it work?</strong></p>
 
 <p>We pick a random IV, then we XOR the messages blocks with F(k,IV + message block number)</p>
 
-<p>Nonce based counter mode: IV = [ 64-bit nonce | 64-bit counter (starts at 0 for every message)]</p>
+<p>Nonce based counter mode: IV = { 64-bit nonce | 64-bit counter (starts at 0 for every message)}</p>
 
 <p>Note that we can encrypt a maximum of 2^64 blocks per nonce because otherwise the counter overflows and the pad would be used a second time.</p>
 
-<p>We can use counter-mode for more blocks than CBC because  the adversary’s advantage is 2q^2L / |X| &lt; CBC’s advantage.</p>
+<p>We can use counter-mode for more blocks than CBC because  the adversary’s advantage is <code>2q^2L / |X| &lt; CBC’s advantage.</code></p>
 
 <p>For AES, we can encrypt 2^64 AES blocks  with the same key with semantic secrecy.</p>
 
 <p>Advantage: It’s parallelizable! Fast encryption! And is so much better than CBC.</p>
+
+<h3 id="coparison-ctr-vs-cbc">Coparison: CTR vs CBC</h3>
 
 <p><img src="http://cl.ly/TgXt/Screen%20Shot%202014-02-01%20at%2022.38.13.png" alt="CBC vs Counter" /></p>
 
