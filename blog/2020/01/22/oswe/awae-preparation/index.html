@@ -19,7 +19,7 @@
     "headline" : "OSWE/AWAE Preparation",
     "description" : "OSWE-AWAE-Preparation This post contains all trainings and tutorials that could be useful for offensive security&rsquo;s OSWE certification. I will be updating the post during my lab and preparation for the exam.
 Course Syllabus: https://www.offensive-security.com/documentation/awae-syllabus.pdf
-Before registering for AWAE:  Cross-Site Scripting:  XSS XMLHttpRequest Specification AtMail Email Server Appliance 6.4 - Persistent Cross-Site Scripting Persistent XSS Hijack Session using socat   XSS and MySQL  PentesterLab: XSS and MySQL FILE  https://www.",
+Before registering for AWAE:  Get comfortable with python requests library Read Web Application Hacker&rsquo;s handbook, again if you already did Get familiar with Burpsuite Get familiar with regex Cross-Site Scripting:  XSS XMLHttpRequest Specification Hijack Session using socat   XSS and MySQL  PentesterLab: XSS and MySQL FILE  https://www.",
     "inLanguage" : "en-US",
     "author" : "Z-r0crypt",
     "creator" : "Z-r0crypt",
@@ -30,7 +30,7 @@ Before registering for AWAE:  Cross-Site Scripting:  XSS XMLHttpRequest Specific
     "datePublished": "2020-01-22 22:10:36 -0500 -0500",
     "dateModified" : "2020-01-22 22:10:36 -0500 -0500",
     "url" : "https://z-r0crypt.github.io/blog/2020/01/22/oswe/awae-preparation/",
-    "wordCount" : "315",
+    "wordCount" : "353",
     "keywords" : [ "OSWE","AWAE","Web","Offensive Security","Exploit","Blog" ]
 }
 </script>
@@ -183,13 +183,16 @@ text-align: center;
 <h3 id="before-registering-for-awae">Before registering for AWAE:</h3>
 
 <ul>
+<li><a href="https://2.python-requests.org/en/v2.8.1/user/advanced/">Get comfortable with python requests library</a></li>
+<li><a href="https://www.amazon.com/Web-Application-Hackers-Handbook-Exploiting-ebook/dp/B005LVQA9S">Read Web Application Hacker&rsquo;s handbook, again if you already did</a></li>
+<li><a href="https://portswigger.net/burp/communitydownload">Get familiar with Burpsuite</a></li>
+<li><a href="https://regex101.com/">Get familiar with regex</a></li>
+
 <li><h4 id="cross-site-scripting">Cross-Site Scripting:</h4>
 
 <ul>
 <li><a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a></li>
 <li><a href="https://xhr.spec.whatwg.org/">XMLHttpRequest Specification</a></li>
-<li><a href="https://www.exploit-db.com/exploits/20009">AtMail Email Server Appliance 6.4 - Persistent Cross-Site Scripting</a></li>
-<li><a href="https://www.acunetix.com/blog/articles/persistent-xss/">Persistent XSS</a></li>
 <li><a href="https://popped.io/hijacking-sessions-using-socat/">Hijack Session using socat</a>
 <br /></li>
 </ul></li>
@@ -215,6 +218,13 @@ text-align: center;
 <hr />
 
 <ul>
+<li><h3 id="atmail-mail-server-appliance-from-xss-to-rce-6-4-cve-2012-2593">Atmail Mail Server Appliance: from XSS to RCE (6.4) CVE-2012-2593</h3>
+
+<ul>
+<li><a href="https://www.exploit-db.com/exploits/20009">AtMail Email Server Appliance 6.4 - Persistent Cross-Site Scripting</a></li>
+<li><a href="https://rhinosecuritylabs.com/application-security/labkey-server-vulnerabilities-to-rce/">Chaining XSS, CSRF to achieve RCE</a></li>
+</ul></li>
+
 <li><h3 id="atutor-authentication-bypass-and-rce-2-2-1-cve-2016-2555">ATutor Authentication Bypass and RCE (2.2.1) CVE-2016-2555</h3>
 
 <ul>
@@ -302,7 +312,7 @@ text-align: center;
 <li><h3 id="nodejs">NodeJS:</h3>
 
 <ul>
-<li><strong>Bassmaster Install: npm install bassmaster@1.5.1</strong></li>
+<li><strong>Bassmaster Install: <code>npm install bassmaster@1.5.1</code></strong></li>
 <li><a href="https://www.npmjs.com/package/bassmaster">https://www.npmjs.com/package/bassmaster</a></li>
 <li><a href="https://www.rapid7.com/db/modules/exploit/multi/http/bassmaster_js_injection">https://www.rapid7.com/db/modules/exploit/multi/http/bassmaster_js_injection</a></li>
 <li><a href="https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/http/bassmaster_js_injection.rb">https://github.com/rapid7/metasploit-framework/blob/master/modules/exploits/multi/http/bassmaster_js_injection.rb</a></li>
