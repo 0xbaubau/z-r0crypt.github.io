@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://z-r0crypt.github.io/blog/2020/02/12/port-forward-tunnelling-quick-reference-guide/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://z-r0crypt.github.io/blog/2020/02/05/cryptography-i---week-2---part-2/</loc>
     <lastmod>2020-02-05T16:52:36-05:00</lastmod>
   </url>
@@ -137,13 +132,13 @@
   
   <url>
     <loc>https://z-r0crypt.github.io/categories/exploitdev/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
+    <lastmod>2020-01-22T22:10:36-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://z-r0crypt.github.io/tags/exploitdev/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
+    <lastmod>2020-01-22T22:10:36-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -166,20 +161,8 @@
   </url>
   
   <url>
-    <loc>https://z-r0crypt.github.io/categories/penetration-testing/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://z-r0crypt.github.io/tags/port-forwarding/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://z-r0crypt.github.io/post/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
+    <lastmod>2020-02-05T16:52:36-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -203,13 +186,7 @@
   
   <url>
     <loc>https://z-r0crypt.github.io/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://z-r0crypt.github.io/tags/ssh/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
+    <lastmod>2020-02-05T16:52:36-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -228,12 +205,6 @@
   <url>
     <loc>https://z-r0crypt.github.io/tags/</loc>
     <lastmod>2020-02-03T16:52:36-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://z-r0crypt.github.io/tags/tunnelling/</loc>
-    <lastmod>2020-02-12T07:10:36-05:00</lastmod>
     <priority>0</priority>
   </url>
   
